@@ -1,3 +1,5 @@
+import InputTodo from "@/components/InputTodo";
+import TodosList from "@/components/TodosList";
 
 const TodosLogic = () => {
     // Mock List
@@ -20,15 +22,14 @@ const TodosLogic = () => {
     ];
 
     return (
-        /* To Display the list we need to loop through the array using the js map() function and return the title of the individual todo*/
-        <>
-            <ul>
-                {todos.map(todo => (
-                    <li>{todo.title}</li>
-                ))}
-            </ul>
 
-        </>
+        <div>
+
+            <InputTodo />
+
+            <TodosList todosProps={todos} />
+
+        </div>
     );
 };
 
