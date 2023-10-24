@@ -1,11 +1,12 @@
+import TodoItem from "@/components/TodoItem";
 
-const TodosList = (props) => {
+const TodosList = ({ todosProps }) => {
     /* To Display the list we need to loop through the array using the js map function and return the title of the individual todo*/
     return (
         <div>
             <ul>
-                {props.todosProps.map(todo => (
-                    <li>{todo.title}</li>
+                {todosProps.map(todo => (
+                    <TodoItem itemProp={todo} />
                 ))}
             </ul>
         </div>
