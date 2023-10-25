@@ -1,10 +1,19 @@
 //  Import modular styling and add ass attribute to JSX
 import styles from '@/styles/TodoItem.module.css';
+import { useState } from 'react';
 
 
 // This component will render the actual li item to be rendered in TodosList
 
 const TodoItem = ({ itemProp, setTodos, handleChange, delTodo }) => {
+
+    // Add state to allow switch between editing and read-only for todos
+    const [editing, setEditing] = useState(false);
+
+    const handleEditing = () => {
+        setEditing((prev) => !prev);
+        console.log(editing);
+    };
 
     // Creating a style object to dynamically style based on completed state
     const completedStyle = {
@@ -23,6 +32,7 @@ const TodoItem = ({ itemProp, setTodos, handleChange, delTodo }) => {
                         checked={itemProp.completed}
                         onChange={() => handleChange(itemProp.id)}
                     />
+                    <button onClick={handleEditing}>Edit</button>
                     <button onClick={() => delTodo(itemProp.id)}>Delete</button>
                     <span style={itemProp.completed ? completedStyle : null}>
                         {itemProp.title}
