@@ -1,7 +1,7 @@
 
 // This component will render the actual li item to be rendered in TodosList
 
-const TodoItem = ({ itemProp }) => {
+const TodoItem = ({ itemProp, setTodos }) => {
     return (
         <>
             <li>
