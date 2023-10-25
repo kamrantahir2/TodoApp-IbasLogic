@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 // This component will render the actual li item to be rendered in TodosList
 
-const TodoItem = ({ itemProp, setTodos, handleChange, delTodo }) => {
+const TodoItem = ({ itemProp, setTodos, handleChange, delTodo, setUpdate }) => {
 
     // Add state to allow switch between editing and read-only for todos
     const [editing, setEditing] = useState(false);
@@ -51,7 +51,8 @@ const TodoItem = ({ itemProp, setTodos, handleChange, delTodo }) => {
                     value={itemProp.title}
                     className={styles.textInput}
                     style={editMode}
-                    onChange={(e) => console.log(e.target.value, itemProp.id)}
+                    onChange={(e) => setUpdate(e.target.value, itemProp.id)
+                    }
                 />
             </li>
         </>
