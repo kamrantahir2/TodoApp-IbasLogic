@@ -22,13 +22,25 @@ const TodosLogic = () => {
         },
     ]);
 
+    const handleChange = (id) => {
+        setTodos((prev) => prev.map((todo) => {
+            if (todo.id === id) {
+                return {
+                    ...todo,
+                    completed: !todo.completed
+                };
+            }
+            return todo;
+        }));
+    };
+
     return (
 
         <div>
 
             <InputTodo />
 
-            <TodosList todosProps={todos} setTodos={setTodos} />
+            <TodosList todosProps={todos} setTodos={setTodos} handleChange={handleChange} />
 
         </div>
     );
