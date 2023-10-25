@@ -1,14 +1,23 @@
 //  Import modular styling and add ass attribute to JSX
 import styles from '@/styles/TodoItem.module.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 
 // This component will render the actual li item to be rendered in TodosList
 
 const TodoItem = ({ itemProp, setTodos, handleChange, delTodo, setUpdate }) => {
 
+    // We will be taking advantage of useRef to switch to uncontrolled input
+    const editInputRef = useRef(null);
+
+
     // Add state to allow switch between editing and read-only for todos
     const [editing, setEditing] = useState(false);
+
+    // Initialise internal state to avoid rerendering entire app on edit
+    // const [updateInput, setUpdateInput] = useState(itemProp.title);
+    // We will be switching to uncontrolled input so we will be removing the state
+
 
     const handleEditing = () => {
         setEditing((prev) => !prev);
@@ -33,6 +42,7 @@ const TodoItem = ({ itemProp, setTodos, handleChange, delTodo, setUpdate }) => {
 
     const handleUpdateDone = (event) => {
         if (event.key === 'Enter') {
+            setUpdate(editInputRef.current.value, itemProp.id);
             setEditing(false);
         }
     };
@@ -54,11 +64,15 @@ const TodoItem = ({ itemProp, setTodos, handleChange, delTodo, setUpdate }) => {
                     </span>
                 </div>
                 <input
+                    // To switch to uncontrolled input we comment out the value and onchange attributes
                     type="text"
-                    value={itemProp.title}
+                    // value={updateInput}
                     className={styles.textInput}
                     style={editMode}
-                    onChange={(e) => setUpdate(e.target.value, itemProp.id)}
+                    // onChange={(e) => setUpdateInput(e.target.value)}
+                    // We are using useRef to switch to uncontrolled input
+                    ref={editInputRef}
+                    defaultValue={itemProp.title}
                     onKeyDown={handleUpdateDone}
                 />
             </li>
