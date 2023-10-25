@@ -6,6 +6,14 @@ import styles from '@/styles/TodoItem.module.css';
 
 const TodoItem = ({ itemProp, setTodos, handleChange, delTodo }) => {
 
+    // Creating a style object to dynamically style based on completed state
+    const completedStyle = {
+        fontStyle: 'italic',
+        color: 'blue',
+        opacity: 0.4,
+        textDecoration: 'line-through'
+    };
+
     return (
         <>
             <li className={styles.item}>
@@ -16,7 +24,9 @@ const TodoItem = ({ itemProp, setTodos, handleChange, delTodo }) => {
                         onChange={() => handleChange(itemProp.id)}
                     />
                     <button onClick={() => delTodo(itemProp.id)}>Delete</button>
-                    {itemProp.title}
+                    <span style={itemProp.completed ? completedStyle : null}>
+                        {itemProp.title}
+                    </span>
                 </div>
 
             </li>
