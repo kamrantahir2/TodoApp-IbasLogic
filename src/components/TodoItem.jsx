@@ -12,7 +12,6 @@ const TodoItem = ({ itemProp, setTodos, handleChange, delTodo }) => {
 
     const handleEditing = () => {
         setEditing((prev) => !prev);
-        console.log(editing);
     };
 
     // Creating a style object to dynamically style based on completed state
@@ -23,10 +22,19 @@ const TodoItem = ({ itemProp, setTodos, handleChange, delTodo }) => {
         textDecoration: 'line-through'
     };
 
+    // Display textfield only if editing state is true
+    let viewMode = {};
+    let editMode = {};
+    if (editing) {
+        viewMode.display = 'none';
+    } else {
+        editMode.display = 'none';
+    }
+
     return (
         <>
             <li className={styles.item}>
-                <div className={styles.content}>
+                <div className={styles.content} style={viewMode} >
                     <input
                         type="checkbox"
                         checked={itemProp.completed}
@@ -38,7 +46,13 @@ const TodoItem = ({ itemProp, setTodos, handleChange, delTodo }) => {
                         {itemProp.title}
                     </span>
                 </div>
-
+                <input
+                    type="text"
+                    value={itemProp.title}
+                    className={styles.textInput}
+                    style={editMode}
+                    onChange={(e) => console.log(e.target.value, itemProp.id)}
+                />
             </li>
         </>
     );
