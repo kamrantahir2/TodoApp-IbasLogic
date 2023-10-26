@@ -1,7 +1,8 @@
 //  Import modular styling and add ass attribute to JSX
 import styles from '@/styles/TodoItem.module.css';
 import { useState, useRef } from 'react';
-
+import { FaTrash } from 'react-icons/fa';
+import { AiFillEdit } from 'react-icons/ai';
 
 // This component will render the actual li item to be rendered in TodosList
 
@@ -57,8 +58,8 @@ const TodoItem = ({ itemProp, setTodos, handleChange, delTodo, setUpdate }) => {
                         checked={itemProp.completed}
                         onChange={() => handleChange(itemProp.id)}
                     />
-                    <button onClick={handleEditing}>Edit</button>
-                    <button onClick={() => delTodo(itemProp.id)}>Delete</button>
+                    <button onClick={handleEditing}><AiFillEdit /></button>
+                    <button onClick={() => delTodo(itemProp.id)}><FaTrash /></button>
                     <span style={itemProp.completed ? completedStyle : null}>
                         {itemProp.title}
                     </span>
