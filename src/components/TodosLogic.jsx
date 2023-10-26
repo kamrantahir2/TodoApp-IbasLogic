@@ -5,23 +5,16 @@ import { v4 as uuidv4 } from 'uuid';
 
 const TodosLogic = () => {
     // Mock List
-    const [todos, setTodos] = useState([
-        {
-            id: uuidv4(),
-            title: 'Setup development environment',
-            completed: true,
-        },
-        {
-            id: uuidv4(),
-            title: 'Develop website and add content',
-            completed: false,
-        },
-        {
-            id: uuidv4(),
-            title: 'Deploy to live server',
-            completed: false,
-        },
-    ]);
+    const [todos, setTodos] = useState(getInitialTodos);
+
+    // Function to retrieve todos items from local storage
+    const getInitialTodos = () => {
+        // Getting stored items
+        const temp = localStorage.getItem('todos');
+        const savedTodos = JSON.parse(temp);
+        return savedTodos || [];
+        // We also changed the todos State default to this function
+    };
 
 
     // We will be taking advantage of browser local storage which has data persistence
@@ -30,6 +23,8 @@ const TodosLogic = () => {
         const temp = JSON.stringify(todos);
         localStorage.setItem("todos", temp);
     }, [todos]);
+
+
 
     const handleChange = (id) => {
         setTodos((prev) => prev.map((todo) => {
