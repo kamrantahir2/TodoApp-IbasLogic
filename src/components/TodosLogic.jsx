@@ -3,6 +3,8 @@ import TodosList from "@/components/TodosList";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
+// To give the components access to the data we need to import TodosProvider which we created and wrap the jsx in its component
+import { TodosProvider } from "/context/TodosContext";
 
 
 const TodosLogic = () => {
@@ -68,14 +70,16 @@ const TodosLogic = () => {
 
     return (
 
-        <div>
+        // We wrap the components in TodosProvider to give all its descendents access to the data. The descendents of InputTodo and TodosList are also covered.
+        // Header and TodosLogic are not covered. They do not need access to the data so we will keep access to where it's needed.
+        <TodosProvider>
 
             <InputTodo addTodoItem={addTodoItem} />
 
             <TodosList todosProps={todos} setTodos={setTodos} handleChange={handleChange} delTodo={delTodo}
                 setUpdate={setUpdate} />
 
-        </div>
+        </TodosProvider>
     );
 };
 
