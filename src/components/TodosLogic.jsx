@@ -3,9 +3,9 @@ import TodosList from "@/components/TodosList";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
+
+
 const TodosLogic = () => {
-    // Mock List
-    const [todos, setTodos] = useState(getInitialTodos);
 
     // Function to retrieve todos items from local storage
     const getInitialTodos = () => {
@@ -16,6 +16,7 @@ const TodosLogic = () => {
         // We also changed the todos State default to this function
     };
 
+    const [todos, setTodos] = useState(getInitialTodos);
 
     // We will be taking advantage of browser local storage which has data persistence
     useEffect(() => {
@@ -23,7 +24,6 @@ const TodosLogic = () => {
         const temp = JSON.stringify(todos);
         localStorage.setItem("todos", temp);
     }, [todos]);
-
 
 
     const handleChange = (id) => {
