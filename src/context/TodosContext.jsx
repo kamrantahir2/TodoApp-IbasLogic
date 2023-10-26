@@ -10,7 +10,7 @@ export const TodosProvider = ({ children }) => {
     return (
 
         // All components that will be descendents of <TodosProvider> will have access to whatever we assign to the provider's value prop
-        <TodosContext.Provider>
+        <TodosContext.Provider value={'todos data'} >
             {children}
         </TodosContext.Provider>
     );
