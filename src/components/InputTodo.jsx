@@ -2,6 +2,7 @@
 import { useState } from 'react';
 // Alongside useState, we will be importing icons from react-icons
 import { FaPlusCircle } from 'react-icons/fa';
+// import styles from '@/styles/app.css';
 
 
 const InputTodo = ({ addTodoItem }) => {

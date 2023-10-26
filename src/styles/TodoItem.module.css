@@ -34,3 +34,7 @@
     border: 1px solid #dfdfdf;
     outline: none;
 }
+
+.del-button svg {
+    color: red;
+}
