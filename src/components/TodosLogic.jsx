@@ -1,6 +1,6 @@
 import InputTodo from "@/components/InputTodo";
 import TodosList from "@/components/TodosList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 const TodosLogic = () => {
@@ -22,6 +22,14 @@ const TodosLogic = () => {
             completed: false,
         },
     ]);
+
+
+    // We will be taking advantage of browser local storage which has data persistence
+    useEffect(() => {
+        // Storing todos items
+        const temp = JSON.stringify(todos);
+        localStorage.setItem("todos", temp);
+    }, [todos]);
 
     const handleChange = (id) => {
         setTodos((prev) => prev.map((todo) => {
