@@ -1,7 +1,7 @@
 
 // Global data will be kept in a context store and will expose them for other components to consume
 
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 
 const TodosContext = createContext(null);
 
@@ -16,6 +16,6 @@ export const TodosProvider = ({ children }) => {
     );
 };
 
-export { TodosContext };
+export const useTodosContext = () => useContext(TodosContext);
 
 // We will now be heading to TodosLogic to wrap the entire jsx in <TodosProvider>. This will allow the components to have access to the context
