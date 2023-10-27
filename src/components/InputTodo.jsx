@@ -7,14 +7,21 @@ import { FaPlusCircle } from 'react-icons/fa';
 // Importing useTodosContext to consume context data
 import { useTodosContext } from '@/context/TodosContext';
 
+// Import useTodosStore in order to consume data from the store
+import { useTodosStore } from '@/store';
+
 const InputTodo = () => {
     const [title, setTitle] = useState('');
     const [message, setMessage] = useState('');
-    const { addTodoItem } = useTodosContext();
+    // const { addTodoItem } = useTodosContext();
+
+    //  We will now be getting all handler functions from the store as the store now handles the state
+    const addTodoItem = useTodosStore((state) => state.addTodoItem);
 
     const handleChange = (e) => {
         setTitle(e.target.value);
     };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();

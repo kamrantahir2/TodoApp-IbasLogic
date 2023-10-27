@@ -3,40 +3,47 @@
 import { create } from "zustand";
 import { v4 as uuidv4 } from 'uuid';
 
+// We will be importing {persist} to add data persistence.
+// Importing createJSONStorage to add addition storage (We will be using it for session storage)
+
+import { persist, createJSONStorage } from 'zustand/middleware';
+
+
+
 const todosStore = (set) => ({
 
     // All handler functions have been move to this file
         handleChange: (id) => {
-        set((state) => {
-            todos: state.todos.map((todos) => {
+        set((state) => ({
+            todos: state.todos.map((todo) => {
                 if (todo.id === id) {
                     return {
-                        ...todos,
-                        completed: !todos.completed,
+                        ...todo,
+                        completed: !todo.completed,
                     }
                 }
                 return todo;
             })
-        });
+        }));
     },
 
     delTodo: (id) => {
-        set((state) => {
+        set((state) => ({
             todos: state.todos.filter((todo) => {
                 return todo.id !== id;
             })
-       });
+       }));
     },
 
     setUpdate: (updatedTitle, id) => {
-        set((state) => {
+        set((state) => ({
             todos: state.todos.map((todo) => {
                 if (todo.id === id) {
-                    todo.title = updatedTitle;
+                    todo.title = updatedTitle
                 }
                 return todo;
             })
-        });
+        }));
     },
 
 
@@ -58,4 +65,11 @@ const todosStore = (set) => ({
 
 });
 
-export const useTodosStore = create(todosStore);
+export const useTodosStore = create(
+    // We will make use of persist() to enable data persistence
+    persist(todosStore, {
+        name: 'todos',
+        // We can also add additional storage using createJSONStorage, for example session storage
+        storage: createJSONStorage(() => sessionStorage)
+    })
+);

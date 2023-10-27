@@ -7,12 +7,14 @@ import { AiFillEdit } from 'react-icons/ai';
 // Importing useTodosContext to consume context data
 import { useTodosContext } from '@/context/TodosContext';
 
-// This component will render the actual li item to be rendered in TodosList
+// Importing useTodosStore to access datat from the store
+import { useTodosStore } from '@/store';
 
+// This component will render the actual li item to be rendered in TodosList
 const TodoItem = ({ itemProp }) => {
 
     // Importing useTodosContext to consume context data
-    const { handleChange, delTodo, setUpdate } = useTodosContext();
+    // const { handleChange, delTodo, setUpdate } = useTodosContext();
 
     // We will be taking advantage of useRef to switch to uncontrolled input
     const editInputRef = useRef(null);
@@ -24,6 +26,11 @@ const TodoItem = ({ itemProp }) => {
     // Initialise internal state to avoid rerendering entire app on edit
     // const [updateInput, setUpdateInput] = useState(itemProp.title);
     // We will be switching to uncontrolled input so we will be removing the state
+
+    // Handler functions will now be made accessible to this component:
+    const handleChange = useTodosStore((state) => state.handleChange);
+    const delTodo = useTodosStore((state) => state.delTodo);
+    const setUpdate = useTodosStore((state) => state.setUpdate);
 
 
     const handleEditing = () => {

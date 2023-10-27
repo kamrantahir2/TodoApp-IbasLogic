@@ -14,13 +14,15 @@ const TodosLogic = () => {
         // Header and TodosLogic are not covered. They do not need access to the data so we will keep access to where it's needed.
 
         // Now that we have moved the state and handler functions to the value prop in TodosContext we can remove all props below. They now have access to consume the data directly from the context store.
-        <TodosProvider>
 
+        <div>
             <InputTodo />
 
             <TodosList />
+        </div>
 
-        </TodosProvider>
+
+
     );
 };
 
