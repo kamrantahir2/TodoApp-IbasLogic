@@ -4,6 +4,49 @@ import { create } from "zustand";
 import { v4 as uuidv4 } from 'uuid';
 
 const todosStore = (set) => ({
+
+    // All handler functions have been move to this file
+        handleChange: (id) => {
+        setTodos((prev) => prev.map((todo) => {
+            if (todo.id === id) {
+                return {
+                    ...todo,
+                    completed: !todo.completed
+                };
+            }
+            return todo;
+        }));
+    },
+
+    delTodo: (id) => {
+        setTodos([
+            ...todos.filter((todo) => {
+                return todo.id !== id;
+            })
+        ]);
+    },
+
+    addTodoItem: (title) => {
+        const newTodo = {
+            id: uuidv4(),
+            title: title,
+            completed: false
+        };
+        setTodos([...todos, newTodo]);
+    },
+
+    setUpdate: (updatedTitle, id) => {
+        setTodos(todos.map((todo) => {
+            if (todo.id === id) {
+                todo.title = updatedTitle;
+            }
+            return todo;
+
+        }));
+    },
+
+
+
     // Create new array so we don't alter the existing stat
     todos: [],
     // Create a new Todo when for when the user adds one
@@ -13,7 +56,7 @@ const todosStore = (set) => ({
             title, title,
             completed: false,
         };
-            // Set the state to include the new Todo
+            // use Set to update the state to include the new Todo
         set((state) => ({
             todos: [...state.todos, newTodo]
         }));
