@@ -7,42 +7,36 @@ const todosStore = (set) => ({
 
     // All handler functions have been move to this file
         handleChange: (id) => {
-        setTodos((prev) => prev.map((todo) => {
-            if (todo.id === id) {
-                return {
-                    ...todo,
-                    completed: !todo.completed
-                };
-            }
-            return todo;
-        }));
+        set((state) => {
+            todos: state.todos.map((todos) => {
+                if (todo.id === id) {
+                    return {
+                        ...todos,
+                        completed: !todos.completed,
+                    }
+                }
+                return todo;
+            })
+        });
     },
 
     delTodo: (id) => {
-        setTodos([
-            ...todos.filter((todo) => {
+        set((state) => {
+            todos: state.todos.filter((todo) => {
                 return todo.id !== id;
             })
-        ]);
-    },
-
-    addTodoItem: (title) => {
-        const newTodo = {
-            id: uuidv4(),
-            title: title,
-            completed: false
-        };
-        setTodos([...todos, newTodo]);
+       });
     },
 
     setUpdate: (updatedTitle, id) => {
-        setTodos(todos.map((todo) => {
-            if (todo.id === id) {
-                todo.title = updatedTitle;
-            }
-            return todo;
-
-        }));
+        set((state) => {
+            todos: state.todos.map((todo) => {
+                if (todo.id === id) {
+                    todo.title = updatedTitle;
+                }
+                return todo;
+            })
+        });
     },
 
 
