@@ -4,9 +4,15 @@ import { useState, useRef } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import { AiFillEdit } from 'react-icons/ai';
 
+// Importing useTodosContext to consume context data
+import { useTodosContext } from '@/context/TodosContext';
+
 // This component will render the actual li item to be rendered in TodosList
 
-const TodoItem = ({ itemProp, setTodos, handleChange, delTodo, setUpdate }) => {
+const TodoItem = ({ itemProp }) => {
+
+    // Importing useTodosContext to consume context data
+    const { handleChange, delTodo, setUpdate } = useTodosContext();
 
     // We will be taking advantage of useRef to switch to uncontrolled input
     const editInputRef = useRef(null);
