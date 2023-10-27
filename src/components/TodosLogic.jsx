@@ -1,7 +1,6 @@
 import InputTodo from "@/components/InputTodo";
 import TodosList from "@/components/TodosList";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
 
 // To give the components access to the data we need to import TodosProvider which we created and wrap the jsx in its component
 import { TodosProvider } from "@/context/TodosContext";
