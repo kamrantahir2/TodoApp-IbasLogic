@@ -1,4 +1,6 @@
 
+import { NavLink } from "react-router-dom";
+
 // This file will be used as a shared layout across all routes
 
 const links = [
@@ -15,7 +17,7 @@ const NavBar = () => {
                 {links.map((link) => {
                     return (
                         <li key={link.text} >
-                            <a href={link.path}>{link.text}</a>
+                            <NavLink to={link.path}>{link.text}</NavLink>
                         </li>
                     );
                 })}
