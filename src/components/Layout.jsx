@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 
 import NavBar from "@/components/NavBar";
 
+// We will wrap the components that rely on AuthContext in AuthProvider. This is because we will need the AuthContext in the NavBar for user authentication
 const Layout = () => {
     return (
         <div className="wrapper">
