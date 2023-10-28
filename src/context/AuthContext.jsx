@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState('');
 
     //  We created a login function that expects the user's input from the login form to update the global user state. This function will be used in the Login component to take the current username
-    const Login = (user) => setUser(user);
+    const login = (user) => setUser(user);
 
     // The logout functiopn only resets the user state and will be used in any component that includes a logout button
     const logout = () => setUser(null);
