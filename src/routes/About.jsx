@@ -23,3 +23,5 @@ const About = () => {
 };
 
 export default About;
+
+// Remember that the about/:slug will render a SinglePage component. So, any matching path like about/about-app will render the SinglePage.
