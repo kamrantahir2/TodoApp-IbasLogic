@@ -84,3 +84,12 @@ body {
     margin-top: 5px;
     display: block;
 }
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+.active {
+    color: #005bb3;
+}

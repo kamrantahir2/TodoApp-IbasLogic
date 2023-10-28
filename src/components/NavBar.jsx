@@ -17,7 +17,8 @@ const NavBar = () => {
                 {links.map((link) => {
                     return (
                         <li key={link.text} >
-                            <NavLink to={link.path}>{link.text}</NavLink>
+                            <NavLink to={link.path}
+                            >{link.text}</NavLink>
                         </li>
                     );
                 })}
