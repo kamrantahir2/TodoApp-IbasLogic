@@ -9,12 +9,12 @@ import TodosLogic from '@/components/TodosLogic';
 
 const Home = () => {
     return (
-        <div className='wrapper'>
-            <div className="todos">
-                <Header />
-                <TodosLogic />
-            </div>
-        </ div>
+        // <div className='wrapper'>
+        <div className="todos">
+            <Header />
+            <TodosLogic />
+        </div>
+        // </ div>
     );
 };
 
