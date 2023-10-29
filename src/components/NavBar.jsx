@@ -5,6 +5,10 @@ import React, { useState } from 'react';
 // We have already created the logout function, all we have to do is incorporate it:
 import { useAuthContext } from "@/context/AuthContext";
 
+// Import hamburger icon and close icon
+import { MdClose } from 'react-icons/md';
+import { FiMenu } from 'react-icons/fi';
+
 // This file will be used as a shared layout across all routes
 
 const links = [
@@ -39,7 +43,11 @@ const NavBar = () => {
             <nav className="navbar">
                 {/* This button will toggle the navbar */}
                 <button className="toggle" onClick={() => setNavbarOpen((prev) => !prev)} >
-                    {navbarOpen ? 'close' : 'open'}
+                    {navbarOpen ? (
+                        <MdClose style={{ width: '32px', height: '32px' }} />
+                    ) : (
+                        <FiMenu style={{ width: '32px', height: '32px' }} />
+                    )}
                 </button>
                 {/* We will use the state varible to add a class name to the widget's element conditionally, This will be done in the ul tag below */}
                 <ul className={`menu-nav${navbarOpen ? ' show-menu' : ''}`} >
