@@ -11,22 +11,25 @@ const headerStyle = {
 };
 
 
-const Header = () => {
+// We will be modifying the Header component to reuse it with varying content in multiple routes
+
+
+const Header = (props) => {
     return (
         <header
-            // Usage of inline css styling
-            // style={{
-            //     padding: '20px 0',
-            //     lineHeight: '1.5em',
-            //     color: '#aeadad',
-            //     textAlign: 'center'
-            // }}
             style={headerStyle}
             // Update Header to include imported style
             className={styles.header}
         >
-            <h1>Todos</h1>
-            <p>Items will persist in the browser local storage</p>
+            {/* <h1>Todos</h1>
+            <p>Items will persist in the browser local storage</p> */}
+
+            {/* We commented out the above code so we can make use of props.children  and make the Header component reusable with varying content in multiple routes: */}
+
+            {props.childen}
+
+            {/* With the children prop we cna now inject varying content between the openening and closing tags of the Header component in other components. We will do this in the Home.jsx routes file*/}
+
         </header>
     );
 };
