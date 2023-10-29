@@ -1,5 +1,5 @@
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import React from 'react';
 
 // We have already created the logout function, all we have to do is incorporate it:
@@ -18,8 +18,13 @@ const NavBar = () => {
 
     // Grab the current state and the logout function from AuthContext
     const { user, logout } = useAuthContext();
+
+    // We will navigate to login route after we logout
+    const navigate = useNavigate();
+
     const handleLogout = () => {
         logout();
+        navigate('/login');
     };
 
     // We will only display the logout feature if the user is logged in. We do this by calling the current state from above and using &&
