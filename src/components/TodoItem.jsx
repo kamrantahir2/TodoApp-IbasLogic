@@ -7,8 +7,11 @@ import { AiFillEdit } from 'react-icons/ai';
 // Importing useTodosContext to consume context data
 import { useTodosContext } from '@/context/TodosContext';
 
-// Importing useTodosStore to access datat from the store
+// Importing useTodosStore to access data from the store
 import { useTodosStore } from '@/store';
+
+// We will hide the edit button for users who are not logged in. We will begin by importing useAuthContect to get the user state
+import { useAuthContext } from '@/context/AuthContext';
 
 // This component will render the actual li item to be rendered in TodosList
 const TodoItem = ({ itemProp }) => {
@@ -61,7 +64,9 @@ const TodoItem = ({ itemProp }) => {
         }
     };
 
+    // We will be adding a conditional based on the user state to render the edit button only if the user is logged in
 
+    const { user } = useAuthContext();
     return (
         <>
             <li className={styles.item}>
@@ -71,7 +76,9 @@ const TodoItem = ({ itemProp }) => {
                         checked={itemProp.completed}
                         onChange={() => handleChange(itemProp.id)}
                     />
-                    <button className='edit-button' onClick={handleEditing}><AiFillEdit /></button>
+                    {user && (
+                        <button className='edit-button' onClick={handleEditing}><AiFillEdit /></button>
+                    )}
                     <button onClick={() => delTodo(itemProp.id)} className='del-button' ><FaTrash /></button>
                     <span style={itemProp.completed ? completedStyle : null}>
                         {itemProp.title}
