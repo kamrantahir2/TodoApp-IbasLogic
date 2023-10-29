@@ -93,3 +93,52 @@ a {
 .active {
     color: #005bb3;
 }
+
+/* ABOUT ROUTE */
+.about {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-list {
+    list-style: none;
+}
+
+.about-list a {
+    padding: 20px 0;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.about-list a:hover {
+    color: #005bb3;
+}
+
+.main-content {
+    max-width: 650px;
+}
+
+.main-content h2 {
+    margin-bottom: 15px;
+    line-height: 30px;
+    font-size: 25px;
+}
+
+.main-content p {
+    line-height: 25px;
+}
+
+
+
+/* Media Queries */
+@media screen and (min-width: 480px) {
+    div.weapper h1 {
+        font-size: 6rem;
+    }
+
+    .about {
+        display: grid;
+        grid-template-columns: 200px minmax(0, 1fr);
+    }
+}

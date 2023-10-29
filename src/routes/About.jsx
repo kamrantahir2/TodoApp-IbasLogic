@@ -7,7 +7,7 @@ const About = () => {
         <>
             <h1>About Page</h1>
             <div className="about">
-                <ul className="about_list">
+                <ul className="about-list">
                     <li>
                         <NavLink to='about-app' >About App</NavLink>
                     </li>
