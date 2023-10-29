@@ -13,6 +13,9 @@ import NotMatch from '@/routes/NotMatch';
 
 import SinglePage from '@/routes/SinglePage';
 
+import ProtectedRoute from './ProtectedRoute';
+
+// We will use ProtectedRoute in the element attribute of profile to make the profile route protected
 
 // We will wrap all route elements in a Layout route which will inlude shared components.
 // We will also nest routes in the About route to provide different 
@@ -28,7 +31,9 @@ const TodoApp = () => {
                     <Route path=':slug' element={<SinglePage />} />
                 </Route>
                 <Route path='login' element={<Login />} />
-                <Route path='profile' element={<Profile />} />
+                <Route path='profile' element={<ProtectedRoute>
+                    <Profile />
+                </ProtectedRoute>} />
                 <Route path='*' element={<NotMatch />} />
             </Route>
 
