@@ -48,7 +48,7 @@ const Login = () => {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
-                    <button>Login</button>
+                    <button className={styles.loginButton} >Login</button>
                 </form>
             </div>
         </div>

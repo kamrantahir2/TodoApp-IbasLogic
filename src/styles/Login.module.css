@@ -1,0 +1,21 @@
+.formWrapper {
+    text-align: center;
+}
+
+.formWrapper button {
+    margin-left: 10px;
+    /* border-bottom: 5px solid #777; */
+    font-size: 20px;
+}
+
+.formWrapper button:hover {
+    font-size: 22px;
+    border-bottom: 5px solid #aaa;
+    transition: 0.2s;
+}
+
+.formWrapper input {
+    /* margin-left: 10px; */
+    /* border-bottom: 5px solid #777; */
+    font-size: 15px;
+}
