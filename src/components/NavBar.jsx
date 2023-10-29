@@ -27,7 +27,7 @@ const NavBar = () => {
         navigate('/login');
     };
 
-    // We will only display the logout feature if the user is logged in. We do this by calling the current state from above and using &&
+    // We will only display the logout feature if the user is logged in. We do this by calling the current state from above and using &&. We will do the same to hide the profile link when logged out
 
     // We will use the global user state to render the login menu link conditionally. This can be seen in the <React.Fragment> section.
     // To add a key to a fragment we must use React.Fragment
@@ -44,6 +44,12 @@ const NavBar = () => {
                                             <NavLink to={link.path}>{link.text}</NavLink>
                                         </li>
                                     )
+                                ) : link.path === 'profile' ? (
+                                    user && (<li>
+                                        <NavLink to={link.path}>
+                                            {link.text}
+                                        </NavLink>
+                                    </li>)
                                 ) : (
                                     <li>
                                         <NavLink to={link.path}>{link.text}</NavLink>
