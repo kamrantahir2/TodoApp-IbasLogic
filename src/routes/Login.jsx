@@ -8,7 +8,8 @@ import { useAuthContext } from "@/context/AuthContext";
 // We will create a form to take the user's input
 const Login = () => {
 
-    // We will access the login function from the context store and current form input state
+    // We will access the login function from the context store and current form input state.
+    // The current state is now available 
     const { login } = useAuthContext();
 
     const [username, setUsername] = useState('');
