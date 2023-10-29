@@ -1,6 +1,6 @@
 
 import { NavLink, useNavigate } from "react-router-dom";
-import React from 'react';
+import React, { useState } from 'react';
 
 // We have already created the logout function, all we have to do is incorporate it:
 import { useAuthContext } from "@/context/AuthContext";
@@ -19,6 +19,9 @@ const NavBar = () => {
     // Grab the current state and the logout function from AuthContext
     const { user, logout } = useAuthContext();
 
+    // We will be creating a toggle dropdown menu. We will begin by initialising a state to keep track of the dropdown state
+    const [navbarOpen, setNavbarOpen] = useState(false);
+
     // We will navigate to login route after we logout
     const navigate = useNavigate();
 
@@ -34,7 +37,12 @@ const NavBar = () => {
     return (
         <>
             <nav className="navbar">
-                <ul>
+                {/* This button will toggle the navbar */}
+                <button className="toggle" onClick={() => setNavbarOpen((prev) => !prev)} >
+                    {navbarOpen ? 'close' : 'open'}
+                </button>
+                {/* We will use the state varible to add a class name to the widget's element conditionally, This will be done in the ul tag below */}
+                <ul className={`menu-nav${navbarOpen ? ' show-menu' : ''}`} >
                     {links.map((link) => {
                         return (
                             <React.Fragment key={link.text} >
