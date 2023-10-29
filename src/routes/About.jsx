@@ -2,10 +2,14 @@
 // Whenever we have a children route we will use Outlet in the parent route (in this, case About) to render the children (in this case, the single page content)
 import { NavLink, Outlet } from "react-router-dom";
 
+import Header from "@/components/Header";
+
 const About = () => {
     return (
         <>
-            <h1>About Page</h1>
+            <Header>
+                <h1>About Page</h1>
+            </Header>
             <div className="about">
                 <ul className="about-list">
                     <li>

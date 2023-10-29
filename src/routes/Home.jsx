@@ -11,7 +11,15 @@ const Home = () => {
     return (
         // <div className='wrapper'>
         <div className="todos">
-            <Header />
+            {/* <Header /> */}
+            {/* We will replace the self closing tag with opening and closing tags to take advantage of props.children in the Header component: */}
+
+            <Header>
+                <h1>Todos</h1>
+                <p>Items will persist in the browser local storage</p>
+            </Header>
+
+
             <TodosLogic />
         </div>
         // </ div>

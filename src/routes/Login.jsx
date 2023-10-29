@@ -4,6 +4,7 @@
 import { useState } from "react";
 import styles from '@/styles/Login.module.css';
 import { useAuthContext } from "@/context/AuthContext";
+import Header from "@/components/Header";
 
 // We want to navigate away from the login screen to an intended route after a successful login. To do this we can take advantage of the useNavigate Hook from React Router
 import { useNavigate, useLocation } from "react-router-dom";
@@ -37,7 +38,9 @@ const Login = () => {
 
     return (
         <div>
-            <h1>Login</h1>
+            <Header>
+                <h1>Login</h1>
+            </Header>
             <div className={styles.formWrapper}>
                 <form className={styles.form} onSubmit={handleSubmit} >
                     <input type="text"

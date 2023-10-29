@@ -18,7 +18,6 @@ const Header = (props) => {
     return (
         <header
             style={headerStyle}
-            // Update Header to include imported style
             className={styles.header}
         >
             {/* <h1>Todos</h1>
@@ -26,7 +25,7 @@ const Header = (props) => {
 
             {/* We commented out the above code so we can make use of props.children  and make the Header component reusable with varying content in multiple routes: */}
 
-            {props.childen}
+            {props.children}
 
             {/* With the children prop we cna now inject varying content between the openening and closing tags of the Header component in other components. We will do this in the Home.jsx routes file*/}
 
