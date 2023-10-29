@@ -6,7 +6,7 @@ import styles from '@/styles/Login.module.css';
 import { useAuthContext } from "@/context/AuthContext";
 
 // We want to navigate away from the login screen to an intended route after a successful login. To do this we can take advantage of the useNavigate Hook from React Router
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // We will create a form to take the user's input
 const Login = () => {
@@ -18,6 +18,12 @@ const Login = () => {
     // We will use useNavigate to navigate away from the login screen after a successful login, this will be done in handleSubmit:
     const navigate = useNavigate();
 
+    // Instead of redirecting manually to the index page using navigate('/') we will take advantage of useLocation
+    const location = useLocation();
+    // We will access the pathname from ProtectedRoute
+    // We've check if we hit the path to a protected route so we can redirect to the route after we log in, otherwise we redirect to the index page
+    const from = location.state?.pathname || '/';
+
     const [username, setUsername] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,7 +31,7 @@ const Login = () => {
         login(username);
         console.log(username);
         // The replace option means that we won't go back to the login screen when we press the back button after a successful login
-        navigate('/', { replace: true });
+        navigate(from, { replace: true });
     };
 
 
