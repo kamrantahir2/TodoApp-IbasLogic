@@ -96,8 +96,11 @@ a {
 
 /* ABOUT ROUTE */
 .about {
-    max-width: 1000px;
+    /* max-width: 1000px; */
     margin: 0 auto;
+    /* background-color: red; */
+    display: block;
+    text-align: center;
 }
 
 .about-list {

@@ -30,6 +30,7 @@ const NavBar = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
+        handleClose();
         logout();
         navigate('/login');
     };
@@ -38,6 +39,11 @@ const NavBar = () => {
 
     // We will use the global user state to render the login menu link conditionally. This can be seen in the <React.Fragment> section.
     // To add a key to a fragment we must use React.Fragment
+
+    const handleClose = () => {
+        setNavbarOpen((prev) => !prev);
+    };
+
     return (
         <>
             <nav className="navbar">
@@ -57,18 +63,18 @@ const NavBar = () => {
                                 {link.path === 'login' ? (
                                     !user && (
                                         <li>
-                                            <NavLink to={link.path}>{link.text}</NavLink>
+                                            <NavLink to={link.path} onClick={handleClose} >{link.text}</NavLink>
                                         </li>
                                     )
                                 ) : link.path === 'profile' ? (
                                     user && (<li>
-                                        <NavLink to={link.path}>
+                                        <NavLink to={link.path} onClick={handleClose} >
                                             {link.text}
                                         </NavLink>
                                     </li>)
                                 ) : (
                                     <li>
-                                        <NavLink to={link.path}>{link.text}</NavLink>
+                                        <NavLink to={link.path} onClick={handleClose} >{link.text}</NavLink>
                                     </li>
                                 )}
                             </React.Fragment>

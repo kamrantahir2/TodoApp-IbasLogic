@@ -17,7 +17,7 @@ const aboutData = [
         slug: 'about-developer',
         title: 'About the developer',
         description:
-            'Ibas Majid founded ibaslogic.com to experiment with new web features and write actionable guides. Follow Ibas on Twitter @ibaslogic to learn modern web development.',
+            "I am Kamran Tahir. I am a self-taught developer originally focused on backend Java development, now, I am breaking into frontend development by learning React. With this new found skill I will be returning to my REST API's and building a frontend for each of them using React.",
     },
 ];
 
